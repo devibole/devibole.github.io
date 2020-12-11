@@ -13,7 +13,7 @@ Happy holidays to everyone!
 Last week, a couple of my friends and I bought some of the holiday snacks/products at trader joes to taste test and review. Here are our takes: 
 
 1) Mini Gingerbread People
-![](IMG_8268.jpeg){height=40%, width=40%}
+![](/post/2020-12-11-trader-joes-holiday-haul-review_files/IMG_8268.jpeg)
 
 ```{python}
 
