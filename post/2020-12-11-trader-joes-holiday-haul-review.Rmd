@@ -1,20 +1,27 @@
 ---
-title: trader joes holiday haul & review
-author: Devika Godbole
+title: "trader joes holiday haul & review"
+author: "Devika Godbole"
 date: '2020-12-11'
-slug: trader-joes-holiday-haul-review
-categories: []
-tags: []
 description: ''
+slug: trader-joes-holiday-haul-review
+tags: []
+categories: []
 ---
 
 Happy holidays to everyone!
 
 Last week, a couple of my friends and I bought some of the holiday snacks/products at trader joes to taste test and review. Here are our takes: 
 
+1) Hot Cocoa Snowman 
+
+```{r echo=FALSE, out.width='100%'}
+knitr::include_graphics('IMG_8260.jpeg')
+```
+
 ```{python}
 
 ```
 
+2) 
 
 
