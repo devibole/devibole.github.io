@@ -1,5 +1,5 @@
 ---
-title: "trader joes holiday haul & review"
+title: "trader joes holiday haul & review (using python just for fun)"
 author: "Devika Godbole"
 date: '2020-12-11'
 description: ''
@@ -10,23 +10,56 @@ categories: []
 
 Happy holidays to everyone!
 
-Last week, a couple of my friends and I bought some of the holiday snacks/products at trader joes to taste test and review. Here are our takes: 
+Last week, a couple of my friends and I bought some of the holiday snacks/products at trader joes to taste test and review. We gave each item a rating from 1-10 and the ratings are in the order [Mark, Allison, Devika]. Here are our takes: 
 
 1) Mini Gingerbread People
 ![](https://imgur.com/4S3oFKu.jpeg){height=40%, width=40%}
+[5,6.5,8.5]
 
 2) Peppermint Chocolate Chunk Cookie Mix
 ![](https://imgur.com/thj8zz7.jpeg){height=40%, width=40%}
+[7,6,6]
 
 3) Dark Chocolate Covered Peppermint Joe Joe's
 ![](https://imgur.com/pAcMffi.jpeg){height=40%, width=40%}
+[9,9,8.5]
 
 4) Dark Chocolate Covered Minty Mallows 
 ![](https://i.imgur.com/QOXkP61.jpeg){height=40%, width=40%}
+[4,4,2]
 
 
+Okay now let's look at the ratings data! 
+```{python}
+import numpy as np
+import pandas as pd 
 
+one = np.array([5.5,6.5,8.5])
+data1 = pd.Series(one, index =["mark","allison", "dev"], name='gingermen')
 
+two = np.array([7,6,6])
+data2 = pd.Series(two, index =["mark","allison", "dev"],name='cookiemix')
 
+three = np.array([9,9,8.5])
+data3 = pd.Series(three, index =["mark","allison", "dev"], name='joejoes')
+
+four = np.array([4,4,2])
+data4 = pd.Series(four, index =["mark","allison", "dev"], name='mintymarshmallow')
+
+data = pd.concat([data1,data2,data3,data4], axis=1)
+dataflip = data.T
+print(dataflip)
+
+```
+
+```{r}
+library(reticulate)
+library(ggplot2)
+library(tidyr)
+
+summary(py$data)
+```
+
+After looking at the summary data, we can see that the joejoes were clearly the most liked snack! Go get em! #This post is not sponsored by Trader Joes. 
 
 

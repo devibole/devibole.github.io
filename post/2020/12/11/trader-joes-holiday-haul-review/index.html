@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Devika Godbole" />
     
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../../img/favicon.ico">
-    <title>trader joes holiday haul &amp; review</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+    <title>trader joes holiday haul &amp; review (using python just for fun)</title>
     <meta name="generator" content="Hugo 0.79.0" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="../../../../../css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
     
@@ -28,7 +28,7 @@
       <nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="../../../../../"><i class="fa fa-home"></i></a>
+      <a class="navbar-brand" href="/"><i class="fa fa-home"></i></a>
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -39,11 +39,11 @@
       <ul class="nav navbar-nav navbar-right">
       
         
-        <li><a href="../../../../../post/">BLOG</a></li>
+        <li><a href="/post/">BLOG</a></li>
         
-        <li><a href="../../../../../projects/">PROJECTS</a></li>
+        <li><a href="/projects/">PROJECTS</a></li>
         
-        <li><a href="../../../../../resume/">CV</a></li>
+        <li><a href="/resume/">CV</a></li>
         
       
       </ul>
@@ -54,7 +54,7 @@
       <div class="container">
         <div class="blog-post">
           <h3>
-            <strong><a href="../../../../../post/2020/12/11/trader-joes-holiday-haul-review/">trader joes holiday haul &amp; review</a></strong>
+            <strong><a href="/post/2020/12/11/trader-joes-holiday-haul-review/">trader joes holiday haul &amp; review (using python just for fun)</a></strong>
           </h3>
         </div>
  
@@ -70,18 +70,55 @@
           <div class="panel-body">
             <div class="blogpost">
               
-<link href="../../../../../rmarkdown-libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
-<script src="../../../../../rmarkdown-libs/anchor-sections/anchor-sections.js"></script>
+<link href="/rmarkdown-libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/anchor-sections/anchor-sections.js"></script>
 
 
 <p>Happy holidays to everyone!</p>
-<p>Last week, a couple of my friends and I bought some of the holiday snacks/products at trader joes to taste test and review. Here are our takes:</p>
+<p>Last week, a couple of my friends and I bought some of the holiday snacks/products at trader joes to taste test and review. We gave each item a rating from 1-10 and the ratings are in the order [Mark, Allison, Devika]. Here are our takes:</p>
 <ol style="list-style-type: decimal">
-<li><p>Mini Gingerbread People <img src="https://imgur.com/4S3oFKu.jpeg" style="width:40.0%" /></p></li>
-<li><p>Peppermint Chocolate Chunk Cookie Mix <img src="https://imgur.com/thj8zz7.jpeg" style="width:40.0%" /></p></li>
-<li><p>Dark Chocolate Covered Peppermint Joe Joe's <img src="https://imgur.com/pAcMffi.jpeg" style="width:40.0%" /></p></li>
-<li><p>Dark Chocolate Covered Minty Mallows <img src="https://i.imgur.com/QOXkP61.jpeg" style="width:40.0%" /></p></li>
+<li><p>Mini Gingerbread People <img src="https://imgur.com/4S3oFKu.jpeg" style="width:40.0%" /> [5,6.5,8.5]</p></li>
+<li><p>Peppermint Chocolate Chunk Cookie Mix <img src="https://imgur.com/thj8zz7.jpeg" style="width:40.0%" /> [7,6,6]</p></li>
+<li><p>Dark Chocolate Covered Peppermint Joe Joe's <img src="https://imgur.com/pAcMffi.jpeg" style="width:40.0%" /> [9,9,8.5]</p></li>
+<li><p>Dark Chocolate Covered Minty Mallows <img src="https://i.imgur.com/QOXkP61.jpeg" style="width:40.0%" /> [4,4,2]</p></li>
 </ol>
+<p>Okay now let's look at the ratings data!</p>
+<pre class="python"><code>import numpy as np
+import pandas as pd 
+
+one = np.array([5.5,6.5,8.5])
+data1 = pd.Series(one, index =[&quot;mark&quot;,&quot;allison&quot;, &quot;dev&quot;], name=&#39;gingermen&#39;)
+
+two = np.array([7,6,6])
+data2 = pd.Series(two, index =[&quot;mark&quot;,&quot;allison&quot;, &quot;dev&quot;],name=&#39;cookiemix&#39;)
+
+three = np.array([9,9,8.5])
+data3 = pd.Series(three, index =[&quot;mark&quot;,&quot;allison&quot;, &quot;dev&quot;], name=&#39;joejoes&#39;)
+
+four = np.array([4,4,2])
+data4 = pd.Series(four, index =[&quot;mark&quot;,&quot;allison&quot;, &quot;dev&quot;], name=&#39;mintymarshmallow&#39;)
+
+data = pd.concat([data1,data2,data3,data4], axis=1)
+dataflip = data.T
+print(dataflip)</code></pre>
+<pre><code>##                   mark  allison  dev
+## gingermen          5.5      6.5  8.5
+## cookiemix          7.0      6.0  6.0
+## joejoes            9.0      9.0  8.5
+## mintymarshmallow   4.0      4.0  2.0</code></pre>
+<pre class="r"><code>library(reticulate)
+library(ggplot2)
+library(tidyr)
+
+summary(py$data)</code></pre>
+<pre><code>##    gingermen       cookiemix        joejoes      mintymarshmallow
+##  Min.   :5.500   Min.   :6.000   Min.   :8.500   Min.   :2.000   
+##  1st Qu.:6.000   1st Qu.:6.000   1st Qu.:8.750   1st Qu.:3.000   
+##  Median :6.500   Median :6.000   Median :9.000   Median :4.000   
+##  Mean   :6.833   Mean   :6.333   Mean   :8.833   Mean   :3.333   
+##  3rd Qu.:7.500   3rd Qu.:6.500   3rd Qu.:9.000   3rd Qu.:4.000   
+##  Max.   :8.500   Max.   :7.000   Max.   :9.000   Max.   :4.000</code></pre>
+<p>After looking at the summary data, we can see that the joejoes were clearly the most liked snack! Go get em! #This post is not sponsored by Trader Joes.</p>
 
             
         <hr>         <div class="related-posts">
@@ -129,10 +166,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="../../../../../js/docs.min.js"></script>
-<script src="../../../../../js/main.js"></script>
+<script src="/js/docs.min.js"></script>
+<script src="/js/main.js"></script>
 
-<script src="../../../../../js/ie10-viewport-bug-workaround.js"></script>
+<script src="/js/ie10-viewport-bug-workaround.js"></script>
 
 
     
