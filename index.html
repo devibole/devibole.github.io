@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500;700&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -32,7 +32,7 @@
 
       body {
         margin: 0;
-        font-family: "Alegreya Sans", sans-serif;
+        font-family: "Nunito Sans", sans-serif;
         color: var(--ink);
         background:
           radial-gradient(circle at 12% 15%, rgba(255, 111, 145, 0.23), transparent 36%),
@@ -40,11 +40,46 @@
           radial-gradient(circle at 18% 88%, rgba(21, 182, 161, 0.18), transparent 33%),
           var(--bg-base);
         line-height: 1.55;
+        overflow-x: hidden;
       }
 
       .page {
         min-height: 100vh;
         padding: 2rem 1rem 3rem;
+      }
+
+      .loading-screen {
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        display: grid;
+        place-items: center;
+        background:
+          radial-gradient(circle at 25% 20%, rgba(255, 111, 145, 0.27), transparent 36%),
+          radial-gradient(circle at 75% 25%, rgba(93, 139, 255, 0.24), transparent 37%),
+          #fff8fb;
+        transition: opacity 0.45s ease;
+      }
+
+      .loading-screen.is-hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .loading-badge {
+        padding: 0.7rem 1.1rem;
+        border-radius: 999px;
+        color: #fff;
+        font-weight: 800;
+        letter-spacing: 0.01em;
+        background: linear-gradient(135deg, var(--accent), #ff8fab);
+        box-shadow: 0 12px 25px rgba(255, 111, 145, 0.35);
+        animation: pop 0.9s ease-in-out infinite;
+      }
+
+      @keyframes pop {
+        0%, 100% { transform: translateY(0) scale(1); }
+        50% { transform: translateY(-4px) scale(1.03); }
       }
 
       .card {
@@ -59,28 +94,62 @@
 
       .hero {
         display: grid;
-        grid-template-columns: 220px 1fr;
+        grid-template-columns: 250px 1fr;
         gap: 2rem;
         align-items: center;
         padding: 2rem;
         border-bottom: 1px solid var(--border);
       }
 
+      .avatar-wrap {
+        position: relative;
+        width: 220px;
+        height: 220px;
+        margin: 0 auto;
+        border-radius: 58% 42% 52% 48% / 46% 54% 46% 54%;
+        background: linear-gradient(135deg, #ff9bb5, #80a9ff 52%, #53d9c8);
+        padding: 7px;
+        box-shadow: 0 20px 36px rgba(72, 78, 108, 0.23);
+        transform: rotate(-2.4deg);
+        transition: transform 0.28s ease;
+        animation: floaty 5.6s ease-in-out infinite;
+      }
+
+      .avatar-wrap:hover {
+        transform: rotate(0deg) scale(1.03);
+      }
+
+      .avatar-wrap::after {
+        content: "";
+        position: absolute;
+        right: -12px;
+        top: -10px;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #fff, #ffe6ee);
+        box-shadow: 0 8px 18px rgba(255, 111, 145, 0.3);
+      }
+
       .avatar {
-        width: 200px;
-        height: 200px;
-        border-radius: 24px;
+        width: 100%;
+        height: 100%;
+        border-radius: 56% 44% 50% 50% / 47% 53% 47% 53%;
         object-fit: cover;
-        border: 4px solid #fff;
-        box-shadow: 0 12px 30px rgba(65, 72, 100, 0.2);
+        border: 3px solid rgba(255, 255, 255, 0.85);
+      }
+
+      @keyframes floaty {
+        0%, 100% { transform: rotate(-2.4deg) translateY(0); }
+        50% { transform: rotate(-1deg) translateY(-6px); }
       }
 
       h1 {
-        font-family: "Cormorant Garamond", serif;
+        font-family: "Fraunces", serif;
         font-size: clamp(2.1rem, 4vw, 3.3rem);
         line-height: 1.1;
         margin: 0 0 0.6rem;
-        letter-spacing: 0.01em;
+        letter-spacing: 0;
       }
 
       .tagline {
@@ -108,6 +177,7 @@
         border: 0;
         cursor: pointer;
         transition: transform 0.2s ease, filter 0.2s ease;
+        letter-spacing: 0.01em;
       }
 
       .btn.secondary {
@@ -263,10 +333,15 @@
     </style>
   </head>
   <body>
+    <div id="loading-screen" class="loading-screen" aria-hidden="true">
+      <div class="loading-badge">loading something cute...</div>
+    </div>
     <main class="page">
       <section class="card">
         <div class="hero">
-          <img class="avatar" src="/img/devi.jpg" alt="Portrait of Devika Godbole" />
+          <div class="avatar-wrap">
+            <img class="avatar" src="/img/devi.jpg" alt="Portrait of Devika Godbole" />
+          </div>
           <div>
             <h1>Devika Godbole</h1>
             <p class="tagline">
@@ -364,6 +439,17 @@
 
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
+
+      const loadingScreen = document.getElementById("loading-screen");
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          loadingScreen.classList.add("is-hidden");
+          setTimeout(function () {
+            loadingScreen.style.display = "none";
+          }, 500);
+        }, 1000);
+      });
+
       const status = document.getElementById("form-status");
       const submitted = new URLSearchParams(window.location.search).get("submitted");
       if (submitted === "1") {
