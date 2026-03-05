@@ -9,19 +9,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
-        --bg: #f3efe7;
-        --ink: #1d2b35;
-        --ink-soft: #3f5768;
-        --card: rgba(255, 255, 255, 0.88);
-        --accent: #136f63;
-        --accent-2: #f4a261;
-        --border: rgba(29, 43, 53, 0.12);
-        --shadow: 0 20px 45px rgba(21, 41, 56, 0.13);
+        --bg-base: #fff8fb;
+        --ink: #243044;
+        --ink-soft: #51607a;
+        --card: rgba(255, 255, 255, 0.92);
+        --panel: #fff;
+        --accent: #ff6f91;
+        --accent-2: #5d8bff;
+        --accent-3: #15b6a1;
+        --border: rgba(36, 48, 68, 0.12);
+        --shadow: 0 24px 48px rgba(56, 68, 93, 0.14);
       }
 
       * {
@@ -30,13 +32,14 @@
 
       body {
         margin: 0;
-        font-family: "Space Grotesk", sans-serif;
+        font-family: "Manrope", sans-serif;
         color: var(--ink);
         background:
-          radial-gradient(circle at 90% 10%, rgba(244, 162, 97, 0.26), transparent 40%),
-          radial-gradient(circle at 10% 85%, rgba(19, 111, 99, 0.2), transparent 35%),
-          var(--bg);
-        line-height: 1.5;
+          radial-gradient(circle at 12% 15%, rgba(255, 111, 145, 0.23), transparent 36%),
+          radial-gradient(circle at 90% 16%, rgba(93, 139, 255, 0.22), transparent 40%),
+          radial-gradient(circle at 18% 88%, rgba(21, 182, 161, 0.18), transparent 33%),
+          var(--bg-base);
+        line-height: 1.55;
       }
 
       .page {
@@ -45,11 +48,11 @@
       }
 
       .card {
-        max-width: 980px;
+        max-width: 1020px;
         margin: 0 auto;
         background: var(--card);
         border: 1px solid var(--border);
-        border-radius: 24px;
+        border-radius: 26px;
         box-shadow: var(--shadow);
         overflow: hidden;
       }
@@ -69,47 +72,54 @@
         border-radius: 24px;
         object-fit: cover;
         border: 4px solid #fff;
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.14);
+        box-shadow: 0 12px 30px rgba(65, 72, 100, 0.2);
       }
 
       h1 {
-        font-family: "Literata", serif;
-        font-size: clamp(2rem, 4vw, 3rem);
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(2.1rem, 4vw, 3.3rem);
         line-height: 1.1;
-        margin: 0 0 0.7rem;
+        margin: 0 0 0.6rem;
       }
 
       .tagline {
         color: var(--ink-soft);
-        font-size: 1.06rem;
-        margin: 0 0 1.2rem;
-        max-width: 54ch;
+        font-size: 1.08rem;
+        margin: 0;
+        max-width: 60ch;
       }
 
       .cta-row {
         display: flex;
         gap: 0.7rem;
         flex-wrap: wrap;
+        margin-top: 1.25rem;
       }
 
       .btn {
         display: inline-block;
         text-decoration: none;
         color: #fff;
-        background: var(--accent);
+        background: linear-gradient(135deg, var(--accent), #ff8fab);
         border-radius: 999px;
-        padding: 0.65rem 1.1rem;
-        font-weight: 600;
+        padding: 0.7rem 1.15rem;
+        font-weight: 700;
+        border: 0;
+        cursor: pointer;
         transition: transform 0.2s ease, filter 0.2s ease;
       }
 
       .btn.secondary {
-        background: var(--accent-2);
+        background: linear-gradient(135deg, var(--accent-2), #7ca2ff);
+      }
+
+      .btn.tertiary {
+        background: linear-gradient(135deg, var(--accent-3), #39d5c2);
       }
 
       .btn:hover {
         transform: translateY(-2px);
-        filter: brightness(1.03);
+        filter: brightness(1.02);
       }
 
       .sections {
@@ -123,12 +133,12 @@
         border: 1px solid var(--border);
         border-radius: 16px;
         padding: 1rem;
-        background: rgba(255, 255, 255, 0.85);
+        background: var(--panel);
       }
 
       .panel h2 {
-        margin: 0 0 0.5rem;
-        font-size: 1.05rem;
+        margin: 0 0 0.55rem;
+        font-size: 1.06rem;
       }
 
       .panel p {
@@ -147,15 +157,71 @@
         color: var(--ink);
         text-decoration-color: var(--accent);
         text-underline-offset: 2px;
-        font-weight: 500;
+        font-weight: 600;
+      }
+
+      .resume-card {
+        margin: 0 2rem 2rem;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 1rem;
+        background: #fff;
+      }
+
+      .resume-card h2 {
+        margin: 0 0 0.35rem;
+        font-size: 1.2rem;
+      }
+
+      .resume-card p {
+        margin: 0 0 0.9rem;
+        color: var(--ink-soft);
+      }
+
+      .interest-form {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.6rem;
+      }
+
+      .interest-form input {
+        width: 100%;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 0.72rem 0.8rem;
+        font: inherit;
+      }
+
+      .status {
+        margin-top: 0.7rem;
+        color: var(--ink-soft);
+        font-size: 0.93rem;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
       }
 
       footer {
-        max-width: 980px;
+        max-width: 1020px;
         margin: 1rem auto 0;
         text-align: center;
         color: var(--ink-soft);
         font-size: 0.9rem;
+      }
+
+      @media (max-width: 930px) {
+        .interest-form {
+          grid-template-columns: 1fr;
+        }
       }
 
       @media (max-width: 850px) {
@@ -188,12 +254,15 @@
           <div>
             <h1>Devika Godbole</h1>
             <p class="tagline">
-              Biostatistics and data science practitioner interested in applied health
-              research, reproducible analysis, and clear data storytelling.
+              I studied Mathematics at The University of Texas at Austin, completed my
+              Master of Science in Biostatistics at the Harvard T.H. Chan School of
+              Public Health, and now work at Frederick National Cancer Research
+              Laboratory. I focus on practical, data-driven work in health research and
+              clear communication of statistical insights.
             </p>
             <div class="cta-row">
-              <a class="btn" href="/projects/">View Projects</a>
-              <a class="btn secondary" href="/resume/">Resume</a>
+              <a class="btn secondary" href="/projects/">View Projects</a>
+              <a class="btn tertiary" href="https://github.com/devibole">GitHub</a>
               <a class="btn" href="mailto:devikagodbole@hsph.harvard.edu">Email</a>
             </div>
           </div>
@@ -203,13 +272,13 @@
           <article class="panel">
             <h2>Current Focus</h2>
             <p>
-              Statistical modeling, evidence synthesis, and practical tools for better
-              decisions in health and policy contexts.
+              Building robust analysis workflows, supporting translational cancer
+              research, and making technical work easier to understand and apply.
             </p>
           </article>
 
           <article class="panel">
-            <h2>Featured Links</h2>
+            <h2>Find Me Online</h2>
             <div class="links">
               <a href="https://github.com/devibole">GitHub</a>
               <a href="https://www.linkedin.com/in/devibole">LinkedIn</a>
@@ -218,13 +287,45 @@
           </article>
 
           <article class="panel">
-            <h2>Get In Touch</h2>
+            <h2>Collaborate</h2>
             <p>
-              Best way to reach me is by email for collaborations, project discussions,
-              and research opportunities.
+              Open to conversations around research collaboration, analytics consulting,
+              and mission-driven data projects.
             </p>
           </article>
         </div>
+
+        <section class="resume-card" aria-labelledby="resume-interest-heading">
+          <h2 id="resume-interest-heading">
+            Click here if you are interested in my resume/learning more about my work
+          </h2>
+          <p>
+            Share your name and email, then click the button to send me a request. I
+            will email you my resume directly.
+          </p>
+
+          <form id="resume-interest-form" class="interest-form">
+            <label>
+              <span class="sr-only">Your name</span>
+              <input id="visitor-name" name="name" type="text" placeholder="Your name" required />
+            </label>
+            <label>
+              <span class="sr-only">Your email</span>
+              <input
+                id="visitor-email"
+                name="email"
+                type="email"
+                placeholder="Your email"
+                required
+              />
+            </label>
+            <button class="btn" type="submit">
+              Click here for resume + work details
+            </button>
+          </form>
+
+          <p id="form-status" class="status"></p>
+        </section>
       </section>
 
       <footer>
@@ -234,6 +335,40 @@
 
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
+
+      const form = document.getElementById("resume-interest-form");
+      const status = document.getElementById("form-status");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const name = document.getElementById("visitor-name").value.trim();
+        const email = document.getElementById("visitor-email").value.trim();
+
+        if (!name || !email) {
+          status.textContent = "Please enter your name and email.";
+          return;
+        }
+
+        const subject = encodeURIComponent("Resume request from " + name);
+        const body = encodeURIComponent(
+          "Hi Devika,\n\n" +
+            "I would like to learn more about your work and request your resume.\n\n" +
+            "Name: " +
+            name +
+            "\n" +
+            "Email: " +
+            email +
+            "\n\n" +
+            "Thank you."
+        );
+
+        window.location.href =
+          "mailto:devikagodbole@hsph.harvard.edu?subject=" + subject + "&body=" + body;
+
+        status.textContent =
+          "If your email app did not open, email me at devikagodbole@hsph.harvard.edu.";
+      });
     </script>
   </body>
 </html>
