@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Projects by Devika Godbole" />
-    <title>Projects | Devika Godbole</title>
+    <meta name="description" content="Devs Days by Devika Godbole" />
+    <title>Devs Days | Devika Godbole</title>
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -39,11 +39,7 @@
           var(--bg-base);
       }
 
-      .page {
-        min-height: 100vh;
-        padding: 2rem 1rem 3rem;
-      }
-
+      .page { min-height: 100vh; padding: 2rem 1rem 3rem; }
       .card {
         max-width: 1020px;
         margin: 0 auto;
@@ -70,11 +66,7 @@
         margin: 0;
       }
 
-      .nav-links {
-        display: flex;
-        gap: 0.8rem;
-        flex-wrap: wrap;
-      }
+      .nav-links { display: flex; gap: 0.8rem; flex-wrap: wrap; }
 
       .nav-links a {
         color: var(--ink);
@@ -88,71 +80,45 @@
       }
 
       .nav-links a.active {
-        background: linear-gradient(135deg, var(--accent-2), #7ca2ff);
+        background: linear-gradient(135deg, var(--accent), #ff8fab);
         color: #fff;
         border-color: transparent;
       }
 
-      .header {
-        padding: 1.7rem 2rem 1rem;
-      }
+      .content { padding: 1.7rem 2rem 2rem; }
 
       h1 {
         font-family: "DM Serif Display", serif;
         font-size: clamp(2rem, 4vw, 3rem);
-        margin: 0 0 0.45rem;
+        margin: 0 0 0.5rem;
       }
 
       .intro {
-        margin: 0;
+        margin: 0 0 1.2rem;
         color: var(--ink-soft);
-        max-width: 65ch;
+        max-width: 70ch;
       }
 
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1rem;
-        padding: 0 2rem 2rem;
-      }
-
-      .project {
+      .post-preview {
         background: var(--panel);
         border: 1px solid var(--border);
         border-radius: 16px;
         padding: 1rem;
       }
 
-      .tag {
+      .chip {
         display: inline-block;
-        margin-bottom: 0.45rem;
         font-size: 0.8rem;
         font-weight: 700;
         color: #fff;
-        background: linear-gradient(135deg, var(--accent), #ff8fab);
-        border-radius: 999px;
-        padding: 0.25rem 0.55rem;
-      }
-
-      .project h2 {
-        margin: 0 0 0.45rem;
-        font-size: 1.1rem;
-      }
-
-      .project p {
-        margin: 0 0 0.75rem;
-        color: var(--ink-soft);
-      }
-
-      .project a {
-        display: inline-block;
-        text-decoration: none;
-        color: #fff;
         background: linear-gradient(135deg, var(--accent-3), #39d5c2);
-        padding: 0.55rem 0.9rem;
         border-radius: 999px;
-        font-weight: 700;
+        padding: 0.2rem 0.55rem;
+        margin-bottom: 0.4rem;
       }
+
+      .post-preview h2 { margin: 0 0 0.4rem; font-size: 1.1rem; }
+      .post-preview p { margin: 0; color: var(--ink-soft); }
 
       footer {
         max-width: 1020px;
@@ -164,11 +130,7 @@
 
       @media (max-width: 850px) {
         .nav { padding: 1rem; }
-        .header { padding: 1.25rem 1rem 0.8rem; }
-        .grid {
-          grid-template-columns: 1fr;
-          padding: 0 1rem 1rem;
-        }
+        .content { padding: 1.2rem 1rem 1rem; }
       }
     </style>
   </head>
@@ -179,46 +141,26 @@
           <p class="brand">Devika</p>
           <div class="nav-links">
             <a href="/">Home</a>
-            <a class="active" href="/projects/">Projects</a>
-            <a href="/devs_days/">Devs Days</a>
+            <a href="/projects/">Projects</a>
+            <a class="active" href="/devs_days/">Devs Days</a>
           </div>
         </nav>
 
-        <header class="header">
-          <h1>Projects</h1>
+        <section class="content">
+          <h1>Devs Days</h1>
           <p class="intro">
-            A snapshot of selected analytics and computational biology work. I will be
-            expanding this page soon with refreshed summaries and newer projects.
+            A blog space for random thoughts and life updates. Posts will mostly consist
+            of healthy easy semi-homemade recipe ideas, travel suggestions, and whatever
+            else comes to mind.
           </p>
-        </header>
 
-        <section class="grid" aria-label="Project list">
-          <article class="project">
-            <span class="tag">RNA-Seq</span>
-            <h2>Applied DESeq2</h2>
-            <p>Differential expression workflow using DESeq2 with practical interpretation.</p>
-            <a href="/project/deseq2project.html">Open Project</a>
-          </article>
-
-          <article class="project">
-            <span class="tag">Foundations</span>
-            <h2>Project 1: Exploratory Data Analysis</h2>
-            <p>Early-stage wrangling and EDA work from undergraduate coursework.</p>
-            <a href="/project/project1/">Open Project</a>
-          </article>
-
-          <article class="project">
-            <span class="tag">Foundations</span>
-            <h2>Project 2: Modeling, Inference, Prediction</h2>
-            <p>Undergraduate modeling and predictive analysis with inference techniques.</p>
-            <a href="/project/project2/">Open Project</a>
-          </article>
-
-          <article class="project">
-            <span class="tag">RNA-Seq</span>
-            <h2>Gene Expression Fundamentals</h2>
-            <p>Conceptual and technical introduction to gene expression analysis using DESeq.</p>
-            <a href="/project/rnaproj.html">Open Project</a>
+          <article class="post-preview">
+            <span class="chip">Coming Soon</span>
+            <h2>First post is on the way</h2>
+            <p>
+              This page is ready for future entries. I will start sharing recipes,
+              travel notes, and day-to-day finds here.
+            </p>
           </article>
         </section>
       </section>
