@@ -179,6 +179,21 @@
         color: var(--ink-soft);
       }
 
+      .step {
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 0.45rem;
+      }
+
+      .resume-quick {
+        margin-bottom: 1rem;
+      }
+
+      .resume-quick .btn {
+        width: 100%;
+        text-align: center;
+      }
+
       .interest-form {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -295,18 +310,35 @@
         </div>
 
         <section class="resume-card" aria-labelledby="resume-interest-heading">
-          <h2 id="resume-interest-heading">
-            Click here if you are interested in my resume/learning more about my work
-          </h2>
+          <h2 id="resume-interest-heading">resume + work details</h2>
           <p>
-            Share your name and email, then click the button to send me a request. I
-            will email you my resume directly.
+            Two options below. You can either use the quick button, or submit your info
+            directly if you do not want to use a mail app.
           </p>
 
-          <form id="resume-interest-form" class="interest-form">
+          <div class="resume-quick">
+            <p class="step">step 1: quick request button</p>
+            <a
+              class="btn"
+              href="mailto:devibole@gmail.com?subject=resume%20%2B%20work%20details%20request&body=Hi%20Devika%2C%0A%0AI%20am%20interested%20in%20your%20resume%20and%20work%20details.%0A%0AThank%20you."
+              >click here for resume + work details</a
+            >
+          </div>
+
+          <p class="step">step 2: no-mail-app fallback</p>
+          <form
+            id="resume-interest-form"
+            class="interest-form"
+            action="https://formsubmit.co/devibole@gmail.com"
+            method="POST"
+          >
+            <input type="hidden" name="_subject" value="new resume interest from website" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_next" value="https://devibole.github.io/?submitted=1" />
             <label>
               <span class="sr-only">Your name</span>
-              <input id="visitor-name" name="name" type="text" placeholder="Your name" required />
+              <input id="visitor-name" name="name" type="text" placeholder="your name" required />
             </label>
             <label>
               <span class="sr-only">Your email</span>
@@ -314,13 +346,11 @@
                 id="visitor-email"
                 name="email"
                 type="email"
-                placeholder="Your email"
+                placeholder="your email"
                 required
               />
             </label>
-            <button class="btn" type="submit">
-              Click here for resume + work details
-            </button>
+            <button class="btn secondary" type="submit">send details directly</button>
           </form>
 
           <p id="form-status" class="status"></p>
@@ -334,39 +364,11 @@
 
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
-
-      const form = document.getElementById("resume-interest-form");
       const status = document.getElementById("form-status");
-
-      form.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        const name = document.getElementById("visitor-name").value.trim();
-
-        if (!name || !email) {
-          status.textContent = "Please enter your name and email.";
-          return;
-        }
-
-        const subject = encodeURIComponent("Resume request from " + name);
-        const body = encodeURIComponent(
-          "Hi Devika,\n\n" +
-            "I would like to learn more about your work and request your resume.\n\n" +
-            "Name: " +
-            name +
-            "\n" +
-            "Email: " +
-            email +
-            "\n\n" +
-            "Thank you."
-        );
-
-        window.location.href =
-          "mailto:devibole@gmail.com?subject=" + subject + "&body=" + body;
-
-        status.textContent =
-          "If your email app did not open, email me at devikagodbole@hsph.harvard.edu.";
-      });
+      const submitted = new URLSearchParams(window.location.search).get("submitted");
+      if (submitted === "1") {
+        status.textContent = "thank you. your request was sent and i will follow up by email.";
+      }
     </script>
   </body>
 </html>
